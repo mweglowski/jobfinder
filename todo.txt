@@ -1,0 +1,17 @@
+.env variables mongodb nextauth google 
+
+ability to post offers
+
+signIn/signOut 
+
+user profile presenting user details and offers that user posted and ability to delete or update specific offers
+
+add createdBy property to jobOffer
+
+add company to jobOffer
+
+set up MongoDB
+
+set up Google Cloud api etc.
+
+jobOffer page
