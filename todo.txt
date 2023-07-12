@@ -15,3 +15,5 @@ set up MongoDB
 set up Google Cloud api etc.
 
 jobOffer page
+
+style responsively navigation (mobile devices)
