@@ -103,3 +103,8 @@
 .remove_detail {
   @apply bg-gradient-to-l from-green-500 via-emerald-600 to-emerald-700 rounded-lg shadow-md shadow-green-300 border-2 border-green-400 rounded-l-none border-l-0 cursor-pointer w-10 p-2 hover:from-emerald-700 hover:to-emerald-700 transition hover:scale-110 hover:border-l-2 hover:rounded-l-md delay-100;
 }
+
+/* FORM  */
+.inset_shadow {
+  box-shadow: inset -25vw 0 3em -3em rgb(103, 232, 141);
+}

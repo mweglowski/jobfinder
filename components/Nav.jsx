@@ -1,11 +1,10 @@
 "use client";
 import Button from "@components/ui/Button";
 import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import Dropdown from "@components/Dropdown";
+import Dropdown from "@components/ui/Dropdown";
 
 const Nav = () => {
   const { data: session } = useSession({
@@ -19,7 +18,9 @@ const Nav = () => {
 
   return (
     <nav className="flex items-center p-1 justify-between w-full">
-      <div className="logo_text ml-2 sm:ml-0">Jobfinder</div>
+      <Link href="/">
+        <div className="logo_text ml-2 sm:ml-0">Jobfinder</div>
+      </Link>
 
       <div className="flex items-center">
         <Link href="/create-offer" className="hidden sm:block sm:mr-2">

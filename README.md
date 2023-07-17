@@ -3,8 +3,12 @@
 
 ![alt text](https://i.imgur.com/SFtE7Hv.png)
 
+![alt text](https://i.imgur.com/T8jcP5B.png)
+
 ## Mobile View
 ![alt text](https://i.imgur.com/SoTEFhc.png)
+
+![alt text](https://i.imgur.com/0a7Ukz7.png)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

@@ -1,0 +1,19 @@
+import React from 'react'
+
+const FormOptionButton = ({text, selectOption, selectedOption}) => {
+	let buttonClasses = "rounded-md p-2 px-3 bg-slate-100 text-slate-400 border cursor-pointer hover:border-emerald-400 hover:text-emerald-500 duration-300"
+
+	if (selectedOption === text) {
+		buttonClasses += ' bg-emerald-700 text-slate-200'
+	}
+
+	const handleSelectOption = () => {
+		selectOption(text)
+	}
+
+	return (
+		<div className={buttonClasses} onClick={handleSelectOption}>{text}</div>
+	)
+}
+
+export default FormOptionButton

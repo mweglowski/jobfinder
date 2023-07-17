@@ -3,7 +3,7 @@ import "@styles/globals.css";
 
 import Nav from "@components/Nav";
 import { Roboto } from "next/font/google";
-import AuthProvider from "@components/AuthProvider";
+import AuthProvider from "@components/Context/AuthProvider";
 
 const roboto = Roboto({
   subsets: ["latin"],

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import DetailsContainer from "@components/DetailsContainer";
-import JobContainer from "@components/JobContainer";
+import DetailsContainer from "@components/Feed/DetailsContainer";
+import JobContainer from "@components/Feed/JobContainer";
 
 
 const Feed = () => {

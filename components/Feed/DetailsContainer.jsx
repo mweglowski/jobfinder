@@ -1,5 +1,5 @@
 import React from "react";
-import Detail from "@components/Detail";
+import Detail from "@components/Feed/Detail";
 
 const DetailsContainer = ({ data, removeDetail }) => {
   return (
