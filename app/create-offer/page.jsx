@@ -1,11 +1,19 @@
 "use client";
-import FormInput from "@components/Form/FormInput";
 import React, { createRef, useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
+import FormInput from "@components/Form/FormInput";
 import FormDetailsContainer from "@components/Form/FormDetailsContainer";
 import FormOptionButton from "@components/Form/FormOptionButton";
 import Button from "@components/ui/Button";
+import Link from "next/link";
 
 const CreateOffer = () => {
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [skills, setSkills] = useState([]);
   const [locations, setLocations] = useState([]);
   const [selectedExpLevel, setSelectedExpLevel] = useState(null);
@@ -14,8 +22,11 @@ const CreateOffer = () => {
   const experienceLevels = ["Intern", "Junior", "Mid", "Senior", "Principal"];
   const contractTypes = ["UoP", "UZ", "UoD"];
 
+  const headerInputRef = createRef();
+  const companyInputRef = createRef();
   const skillInputRef = createRef();
   const locationInputRef = createRef();
+  const salaryInputRef = createRef();
 
   const handleKeyDownSkillInput = (e) => {
     if (e.key === "Enter" && e.target.value !== "") {
@@ -55,28 +66,53 @@ const CreateOffer = () => {
     setSelectedContractType(contractText);
   };
 
-  const formSubmitHandler = (e) => {
-    e.preventDefault();
+  const createOffer = async () => {
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/offer/new", {
+        method: "POST",
+        body: JSON.stringify({
+          userId: session?.user.name,
+          header: headerInputRef.current.value,
+          company: companyInputRef.current.value,
+          locations,
+          employmentMethod: selectedContractType,
+          experience: experienceLevels.indexOf(selectedExpLevel),
+          salary: salaryInputRef.current.value,
+          skills,
+        }),
+      });
+
+      if (response.ok) {
+        router.push("/");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const formSubmitHandler = () => {
+    createOffer();
   };
 
   return (
     <div className="mt-16 flex text-left w-full flex-col">
       {/* <h1 className="text-5xl font-bold font-sans ml-3 text-slate-700">Create New Offer</h1> */}
 
-      <form
-        className="flex flex-col p-3 max-w-3xl mx-auto w-full gap-4"
-        onSubmit={formSubmitHandler}
-      >
+      <div className="flex flex-col p-3 max-w-3xl mx-auto w-full gap-4">
         {/* HEADER */}
         <label className="flex-col flex">
           <span>Profession Title</span>
-          <FormInput />
+          <FormInput ref={headerInputRef} />
         </label>
 
         {/* COMPANY */}
         <label className="flex-col flex">
           <span>Company</span>
-          <FormInput />
+          <FormInput ref={companyInputRef} />
         </label>
 
         {/* LOCATION */}
@@ -110,7 +146,7 @@ const CreateOffer = () => {
         {/* SALARY */}
         <label className="flex-col flex">
           <span>Salary</span>
-          <FormInput type="number" />
+          <FormInput type="number" ref={salaryInputRef} />
         </label>
 
         {/* FORM OF CONTRACT */}
@@ -128,7 +164,7 @@ const CreateOffer = () => {
           </div>
         </label>
 
-        {/* EXPERIENCE BAR */}
+        {/* EXPERIENCE */}
         <label className="flex-col flex">
           <span>Experience</span>
           <div className="flex gap-1 flex-wrap">
@@ -145,12 +181,17 @@ const CreateOffer = () => {
 
         {/* CONTROL BUTTONS */}
         <div className="flex justify-between mt-4">
-          <Button classNames="border-2 border-black">Back</Button>
-          <Button classNames="shadow-black border-2 border-black bg-black text-white hover:bg-white hover:text-black hover:shadow-none">
+          <Link href="/">
+            <Button classNames="border-2 border-black">Back</Button>
+          </Link>
+          <Button
+            classNames="shadow-black border-2 border-black bg-black text-white hover:bg-white hover:text-gray-900 hover:shadow-none"
+            onClick={formSubmitHandler}
+          >
             Post
           </Button>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

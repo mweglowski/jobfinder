@@ -23,7 +23,7 @@ export const options = {
       },
       async authorize(credentials) {
         // retrieve data from db or other source here
-        // configuration/rpviders/credentials DOCS
+        // configuration/providers/credentials DOCS
         const user = { id: "42", name: "Martin", password: "nextauth" };
 
         if (

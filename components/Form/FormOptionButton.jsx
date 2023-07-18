@@ -7,7 +7,6 @@ const FormOptionButton = ({ text, selectOption, selectedOption }) => {
 
   if (selectedOption === text) {
     buttonClasses += " bg-emerald-700 text-slate-200";
-    console.log(buttonClasses)
   } else {
     buttonClasses += ' bg-slate-100 text-slate-400'
   }

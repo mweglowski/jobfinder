@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import DetailsContainer from "@components/Feed/DetailsContainer";
 import JobContainer from "@components/Feed/JobContainer";
 
-
 const Feed = () => {
   const [searchText, setSearchText] = useState("");
   const [details, setDetails] = useState([]);
@@ -113,7 +112,7 @@ const Feed = () => {
         "C++",
         "Critical Thinking",
         "Communication Skills",
-        "Distributed Systems"
+        "Distributed Systems",
       ],
       location: "Kraków, Warszawa",
       employmentMethod: "UoP",
@@ -134,26 +133,7 @@ const Feed = () => {
 
   //   fetchOffers();
   // }, [])
-
-  useEffect(() => {
-    performSearch();
-  }, [details, setDetails, performSearch]);
-
-  const handleSearchChange = (e) => {
-    setSearchText(e.target.value);
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter" && searchText) {
-      setSearchText("");
-
-      setDetails([...details, searchText]);
-
-      // After adding new detail start filtering for specific offers
-      performSearch();
-    }
-  };
-
+  
   const performSearch = () => {
     if (details.length === 0) {
       setSearchedOffers(jobOffers);
@@ -203,7 +183,26 @@ const Feed = () => {
       return offerMeetsConditions;
     });
 
-    setSearchedOffers(filteredOffers); 
+    setSearchedOffers(filteredOffers);
+  };
+
+  useEffect(() => {
+    performSearch();
+  }, [details, setDetails, performSearch]);
+
+  const handleSearchChange = (e) => {
+    setSearchText(e.target.value);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && searchText) {
+      setSearchText("");
+
+      setDetails([...details, searchText]);
+
+      // After adding new detail start filtering for specific offers
+      performSearch();
+    }
   };
 
   const removeDetail = (detail) => {

@@ -9,8 +9,12 @@ const OfferSchema = new Schema({
 		type: String,
 		required: [true, 'Header is required.'],
 	},
-	location: {
+	company: {
 		type: String,
+		required: [true, 'Company is required.'],
+	},
+	locations: {
+		type: Array,
 		required: [true, 'Location is required.'],
 	},
 	employmentMethod: {
