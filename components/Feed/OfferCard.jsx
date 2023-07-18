@@ -6,7 +6,7 @@ const OfferCard = ({ data }) => {
   const exp = data.experience;
 
   let cardClasses =
-    "flex-1 rounded-xl border border-gray-300 p-4 backdrop-blur-lg backdrop-filter h-fit overflow-hidden min-w-[280px] mx-4 sm:mx-auto  duration-500 hover:shadow-2xl hover:opacity-80 hover:-rotate-3 hover:scale-x-[1.02] hover:scale-y-[.9] hover:z-30 hover:scale-110 cursor-pointer max-w-[450px]";
+    "flex-1 rounded-xl border border-gray-300 p-4 backdrop-blur-lg backdrop-filter h-fit overflow-hidden min-w-[280px] mx-4 sm:mx-auto  duration-500 hover:shadow-2xl hover:opacity-80 hover:-rotate-3 hover:scale-x-[1.02] hover:scale-y-[.9] hover:z-30 hover:scale-110 cursor-pointer max-w-[568px]";
 
   exp === 0
   ? cardClasses += ' bg-blue-400/10'
