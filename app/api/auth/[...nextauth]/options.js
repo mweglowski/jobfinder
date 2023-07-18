@@ -1,11 +1,17 @@
 import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
+
 
 export const options = {
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
     CredentialsProvider({
       name: "Credentials",
@@ -37,4 +43,17 @@ export const options = {
       },
     }),
   ],
+  callbacks: {
+    async session({ session }) {
+      // STORE CURRENT USER SOMEWHERE IDK
+
+      return session;
+    },
+    async signIn({ account, profile, user, credentials }) {
+      
+      // DOING STUFF WITH DATABASE
+
+      return true;
+    },
+  },
 };

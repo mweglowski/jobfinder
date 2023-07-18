@@ -182,10 +182,10 @@ const CreateOffer = () => {
         {/* CONTROL BUTTONS */}
         <div className="flex justify-between mt-4">
           <Link href="/">
-            <Button classNames="border-2 border-black">Back</Button>
+            <Button>Back</Button>
           </Link>
           <Button
-            classNames="shadow-black border-2 border-black bg-black text-white hover:bg-white hover:text-gray-900 hover:shadow-none"
+            classNames="border-2 border-black bg-black text-white hover:bg-white hover:text-black hover:shadow-none shadow-slate-900"
             onClick={formSubmitHandler}
           >
             Post

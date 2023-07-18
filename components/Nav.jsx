@@ -1,19 +1,27 @@
 "use client";
-import Button from "@components/ui/Button";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 import { useState } from "react";
+import { signIn, signOut } from "next-auth/react";
+
+import Button from "@components/ui/Button";
+import Link from "next/link";
 import Image from "next/image";
 import Dropdown from "@components/ui/Dropdown";
 
 const Nav = () => {
-  const { data: session } = useSession({
-    required: true,
-  });
+  const { data: session } = useSession();
   const [isDropdownDisplayed, setIsDropdownDisplayed] = useState(false);
 
   const handleToggleDropdown = () => {
     setIsDropdownDisplayed((prevDisplay) => !prevDisplay);
+  };
+
+  const signOutHandler = () => {
+    signOut();
+  };
+
+  const signInHandler = () => {
+    signIn();
   };
 
   return (
@@ -23,9 +31,18 @@ const Nav = () => {
       </Link>
 
       <div className="flex items-center">
-        <Link href="/create-offer" className="hidden sm:block sm:mr-2">
-          <Button>Create Offer</Button>
-        </Link>
+        {session?.user ? (
+          <>
+            <Link href="/create-offer" className="hidden sm:block">
+              <Button classNames="hover:bg-emerald-600 hover:shadow-emerald-700">Create Offer</Button>
+            </Link>
+            <Button onClick={signOutHandler} classNames="hidden sm:block mx-2">
+              Sign Out
+            </Button>
+          </>
+        ) : (
+          <Button onClick={signInHandler}>Sign In</Button>
+        )}
 
         {/* MOBILE (IMAGE & DROPDOWN)*/}
         {session?.user && (
@@ -46,6 +63,7 @@ const Nav = () => {
                 options={[
                   { text: "Profile", dir: "/profile" },
                   { text: "Create Offer", dir: "/create-offer" },
+                  { text: "Sign Out", dir: null}
                 ]}
               />
             )}
