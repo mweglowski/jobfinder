@@ -13,6 +13,7 @@ const FormInput = forwardRef(
         ref={ref}
         onKeyDown={onKeyDown}
         type={type}
+        name="form_input"
       />
     ) : (
       <input
@@ -20,6 +21,7 @@ const FormInput = forwardRef(
         placeholder={placeholder}
         ref={ref}
         type={type}
+        name="form_input"
       />
     );
   }

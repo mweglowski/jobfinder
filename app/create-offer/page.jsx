@@ -2,7 +2,7 @@
 import FormInput from "@components/Form/FormInput";
 import React, { createRef, useState } from "react";
 import FormDetailsContainer from "@components/Form/FormDetailsContainer";
-import FormGroupButton from "@components/Form/FormOptionButton";
+import FormOptionButton from "@components/Form/FormOptionButton";
 import Button from "@components/ui/Button";
 
 const CreateOffer = () => {
@@ -55,16 +55,18 @@ const CreateOffer = () => {
     setSelectedContractType(contractText);
   };
 
-
   const formSubmitHandler = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
   return (
     <div className="mt-16 flex text-left w-full flex-col">
       {/* <h1 className="text-5xl font-bold font-sans ml-3 text-slate-700">Create New Offer</h1> */}
 
-      <form className="flex flex-col p-3 max-w-3xl mx-auto w-full gap-4" onSubmit={formSubmitHandler}>
+      <form
+        className="flex flex-col p-3 max-w-3xl mx-auto w-full gap-4"
+        onSubmit={formSubmitHandler}
+      >
         {/* HEADER */}
         <label className="flex-col flex">
           <span>Profession Title</span>
@@ -116,7 +118,7 @@ const CreateOffer = () => {
           <span>Contract Type</span>
           <div className="flex gap-1 flex-wrap">
             {contractTypes.map((item) => (
-              <FormGroupButton
+              <FormOptionButton
                 key={item}
                 text={item}
                 selectOption={selectContractTypeHandler}
@@ -131,7 +133,7 @@ const CreateOffer = () => {
           <span>Experience</span>
           <div className="flex gap-1 flex-wrap">
             {experienceLevels.map((item) => (
-              <FormGroupButton
+              <FormOptionButton
                 key={item}
                 text={item}
                 selectOption={selectExperienceLevelHandler}
@@ -144,7 +146,9 @@ const CreateOffer = () => {
         {/* CONTROL BUTTONS */}
         <div className="flex justify-between mt-4">
           <Button classNames="border-2 border-black">Back</Button>
-          <Button classNames="shadow-black border-2 border-black bg-black text-white hover:bg-white hover:text-black hover:shadow-none">Post</Button>
+          <Button classNames="shadow-black border-2 border-black bg-black text-white hover:bg-white hover:text-black hover:shadow-none">
+            Post
+          </Button>
         </div>
       </form>
     </div>

@@ -137,7 +137,7 @@ const Feed = () => {
 
   useEffect(() => {
     performSearch();
-  }, [details, setDetails]);
+  }, [details, setDetails, performSearch]);
 
   const handleSearchChange = (e) => {
     setSearchText(e.target.value);
