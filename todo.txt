@@ -1,4 +1,4 @@
-.env variables mongodb nextauth google 
+.env variables mongodb 
 
 ability to post offers
 
@@ -11,7 +11,5 @@ add createdBy property to jobOffer
 add company to jobOffer
 
 set up MongoDB
-
-set up Google Cloud api etc.
 
 jobOffer page

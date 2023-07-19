@@ -34,14 +34,21 @@ const Nav = () => {
         {session?.user ? (
           <>
             <Link href="/create-offer" className="hidden sm:block">
-              <Button classNames="py-1 hover:bg-emerald-600 hover:shadow-emerald-700">Create Offer</Button>
+              <Button classNames="py-1 hover:bg-emerald-600 hover:shadow-emerald-700 text-sm">
+                Create Offer
+              </Button>
             </Link>
-            <Button onClick={signOutHandler} classNames="py-1 hidden sm:block mx-2">
+            <Button
+              onClick={signOutHandler}
+              classNames="py-1 hidden sm:block mx-2 text-sm"
+            >
               Sign Out
             </Button>
           </>
         ) : (
-          <Button onClick={signInHandler}>Sign In</Button>
+          <Button onClick={signInHandler} classNames="text-sm">
+            Sign In
+          </Button>
         )}
 
         {/* MOBILE (IMAGE & DROPDOWN)*/}
@@ -63,7 +70,7 @@ const Nav = () => {
                 options={[
                   { text: "Profile", dir: "/profile" },
                   { text: "Create Offer", dir: "/create-offer" },
-                  { text: "Sign Out", dir: null}
+                  { text: "Sign Out", dir: null },
                 ]}
               />
             )}

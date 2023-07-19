@@ -70,10 +70,10 @@ const CreateOffer = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/offer/new", {
+      const response = await fetch("/api/offer/new/", {
         method: "POST",
         body: JSON.stringify({
-          userId: session?.user.name,
+          userId: session?.user.id,
           header: headerInputRef.current.value,
           company: companyInputRef.current.value,
           locations,
