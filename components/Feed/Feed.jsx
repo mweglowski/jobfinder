@@ -6,135 +6,9 @@ import JobContainer from "@components/Feed/JobContainer";
 const Feed = () => {
   const [searchText, setSearchText] = useState("");
   const [details, setDetails] = useState([]);
-  const [jobOffers, setJobOffers] = useState([
-    // {
-    //   id: Math.random() * Math.random(),
-    //   header: "React Developer",
-    //   skills: [
-    //     "React.js",
-    //     "Next.js",
-    //     "Tailwind",
-    //     "HTML",
-    //     "Critical Thinking",
-    //     "Analytics",
-    //   ],
-    //   location: "Remote",
-    //   employmentMethod: "UoP",
-    //   experience: 2,
-    //   salary: 11000,
-    // },
-    // {
-    //   id: Math.random() * Math.random(),
-    //   header: "React Developer",
-    //   skills: [
-    //     "React.js",
-    //     "Next.js",
-    //     "Tailwind",
-    //     "HTML",
-    //     "Critical Thinking",
-    //     "Analytics",
-    //   ],
-    //   location: "Remote",
-    //   employmentMethod: "UoP",
-    //   experience: 0,
-    //   salary: 11000,
-    // },
-    {
-      id: Math.random() * Math.random(),
-      header: "React Developer",
-      skills: [
-        "React.js",
-        "Next.js",
-        "Tailwind",
-        "HTML",
-        "Critical Thinking",
-        "Analytics",
-      ],
-      location: "Remote",
-      employmentMethod: "UoP",
-      experience: 1,
-      salary: 11000,
-    },
-    {
-      id: Math.random() * Math.random(),
-      header: "AI Engineer",
-      skills: [
-        "AI",
-        "Machine Learning",
-        "Deep Learning",
-        "Python",
-        "Pandas",
-        "Numpy",
-      ],
-      location: "Remote, Warszawa, Wrocław",
-      employmentMethod: "B2B",
-      experience: 3,
-      salary: 27000,
-    },
-    {
-      id: Math.random() * Math.random(),
-      header: "Machine Learning Engineer",
-      skills: [
-        "Machine Learning",
-        "Tensorflow",
-        "PyTorch",
-        "Python",
-        "Sklearn",
-        "Analytic Thinking",
-      ],
-      location: "Gdańsk",
-      employmentMethod: "UoP",
-      experience: 4,
-      salary: 37500,
-    },
-    {
-      id: Math.random() * Math.random(),
-      header: "Frontend Intern",
-      skills: [
-        "React.js",
-        "JavaScript",
-        "HTML",
-        "CSS",
-        "Tailwind",
-        "Communication Skills",
-      ],
-      location: "Remote, Gdańsk, Katowice",
-      employmentMethod: "UoP",
-      experience: 0,
-      salary: 4200,
-    },
-    {
-      id: Math.random() * Math.random(),
-      header: "Senior Software Engineer",
-      skills: [
-        "Java",
-        "SQL",
-        "C++",
-        "Critical Thinking",
-        "Communication Skills",
-        "Distributed Systems",
-      ],
-      location: "Kraków, Warszawa",
-      employmentMethod: "UoP",
-      experience: 2,
-      salary: 17000,
-    },
-  ]);
+  const [jobOffers, setJobOffers] = useState([]);
   const [searchedOffers, setSearchedOffers] = useState(jobOffers);
 
-  useEffect(() => {
-    const fetchOffers = async () => {
-      const response = await fetch('/api/offer')
-      const data = await response.json()
-
-      console.log('fetched', data)
-      setJobOffers(data)
-      // console.log('hello')
-    }
-
-    fetchOffers();
-  }, [])
-  
   const performSearch = () => {
     if (details.length === 0) {
       setSearchedOffers(jobOffers);
@@ -143,9 +17,10 @@ const Feed = () => {
 
     const filteredOffers = jobOffers.filter((job) => {
       let offerDetailsString =
-        job.location.toLowerCase() +
+        job.locations.join(" ").toLowerCase() +
         job.employmentMethod.toLowerCase() +
         job.header.toLowerCase();
+      console.log(offerDetailsString)
 
       switch (job.experience) {
         case 0:
@@ -188,8 +63,20 @@ const Feed = () => {
   };
 
   useEffect(() => {
+    const fetchOffers = async () => {
+      const response = await fetch("/api/offer");
+      const data = await response.json();
+
+      setJobOffers(data);
+      setSearchedOffers(data);
+    };
+
+    fetchOffers();
+  }, []);
+
+  useEffect(() => {
     performSearch();
-  }, [details, setDetails, performSearch]);
+  }, [details, setDetails]);
 
   const handleSearchChange = (e) => {
     setSearchText(e.target.value);
