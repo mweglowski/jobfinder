@@ -122,17 +122,18 @@ const Feed = () => {
   ]);
   const [searchedOffers, setSearchedOffers] = useState(jobOffers);
 
-  // useEffect(() => {
-  //   const fetchOffers = async () => {
-  //     const response = await fetch('/api/offer')
-  //     const data = await response.json()
+  useEffect(() => {
+    const fetchOffers = async () => {
+      const response = await fetch('/api/offer')
+      const data = await response.json()
 
-  //     console.log('fetched', data)
-  //     // setJobOffers(data)
-  //   }
+      console.log('fetched', data)
+      setJobOffers(data)
+      // console.log('hello')
+    }
 
-  //   fetchOffers();
-  // }, [])
+    fetchOffers();
+  }, [])
   
   const performSearch = () => {
     if (details.length === 0) {

@@ -23,7 +23,7 @@ const OfferCard = ({ data }) => {
       <div className="font-semibold text-xl text-slate-600 sm:min-w-[320px]">
         {data.header}
       </div>
-      <div className="text-slate-400">{data.location}</div>
+      <div className="text-slate-400">{data.locations}</div>
       <div className="flex flex-wrap text-slate-100 font-semibold gap-1 mt-2 justify-evenly">
         {data.skills.map((skill) => (
           <div
