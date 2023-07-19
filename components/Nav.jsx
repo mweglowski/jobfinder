@@ -34,9 +34,9 @@ const Nav = () => {
         {session?.user ? (
           <>
             <Link href="/create-offer" className="hidden sm:block">
-              <Button classNames="hover:bg-emerald-600 hover:shadow-emerald-700">Create Offer</Button>
+              <Button classNames="py-1 hover:bg-emerald-600 hover:shadow-emerald-700">Create Offer</Button>
             </Link>
-            <Button onClick={signOutHandler} classNames="hidden sm:block mx-2">
+            <Button onClick={signOutHandler} classNames="py-1 hidden sm:block mx-2">
               Sign Out
             </Button>
           </>
