@@ -185,7 +185,7 @@ const CreateOffer = () => {
             <Button>Back</Button>
           </Link>
           <Button
-            classNames="border-2 border-black bg-black text-white hover:bg-white hover:text-black hover:shadow-none shadow-slate-900"
+            classNames="border-2 border-black bg-black text-white hover:bg-white hover:text-slate-900 hover:shadow-none shadow-slate-900"
             onClick={formSubmitHandler}
           >
             Post

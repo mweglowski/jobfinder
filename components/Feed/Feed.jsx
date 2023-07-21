@@ -22,7 +22,6 @@ const Feed = () => {
         job.locations.join(" ").toLowerCase() +
         job.employmentMethod.toLowerCase() +
         job.header.toLowerCase();
-      console.log(offerDetailsString);
 
       switch (job.experience) {
         case 0:
