@@ -2,8 +2,10 @@
 import { useEffect, useState } from "react";
 import DetailsContainer from "@components/Feed/DetailsContainer";
 import JobContainer from "@components/Feed/JobContainer";
+import LoadingOfferCard from "./LoadingOfferCard";
 
 const Feed = () => {
+  const [isLoadingOffers, setIsLoadingOffers] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [details, setDetails] = useState([]);
   const [jobOffers, setJobOffers] = useState([]);
@@ -20,7 +22,7 @@ const Feed = () => {
         job.locations.join(" ").toLowerCase() +
         job.employmentMethod.toLowerCase() +
         job.header.toLowerCase();
-      console.log(offerDetailsString)
+      console.log(offerDetailsString);
 
       switch (job.experience) {
         case 0:
@@ -63,12 +65,14 @@ const Feed = () => {
   };
 
   useEffect(() => {
+    setIsLoadingOffers(true);
     const fetchOffers = async () => {
       const response = await fetch("/api/offer");
       const data = await response.json();
 
       setJobOffers(data);
       setSearchedOffers(data);
+      setIsLoadingOffers(false);
     };
 
     fetchOffers();
@@ -119,7 +123,20 @@ const Feed = () => {
       />
 
       {/* Filtered Jobs */}
-      <JobContainer jobOffers={searchedOffers} />
+      {isLoadingOffers ? (
+        <>
+          <p className="text-lg font-semibold animate-pulse">Loading...</p>
+          <div className="flex flex-wrap mt-4 gap-4 justify-center">
+            <LoadingOfferCard />
+            <LoadingOfferCard />
+            <LoadingOfferCard />
+            <LoadingOfferCard />
+            <LoadingOfferCard />
+          </div>
+        </>
+      ) : (
+        <JobContainer jobOffers={searchedOffers} />
+      )}
     </section>
   );
 };
