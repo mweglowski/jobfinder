@@ -14,14 +14,14 @@ const CreateOffer = () => {
   const router = useRouter();
 
   // CHANGE TO ROOT ROUTE IF USER IS NOT SIGNED IN
-  useEffect(() => {
-    setTimeout(() => {
-      if (!session) {
-        router.push("/");
-        return;
-      }
-    }, 500);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     if (!session) {
+  //       router.push("/");
+  //       return;
+  //     }
+  //   }, 500);
+  // }, []);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [skills, setSkills] = useState([]);
