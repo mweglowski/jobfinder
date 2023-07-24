@@ -19,7 +19,7 @@ const Nav = () => {
   };
 
   const signOutHandler = () => {
-    rounter.push('/')
+    rounter.push("/");
     signOut();
   };
 
@@ -35,7 +35,12 @@ const Nav = () => {
 
       <div className="flex items-center">
         {session?.user ? (
-          <>
+          <div className="flex gap-2 mr-2">
+            <Link href="/profile" className="hidden sm:block">
+              <Button classNames="py-1 hover:bg-emerald-600 hover:shadow-emerald-700 text-sm">
+                Profile
+              </Button>
+            </Link>
             <Link href="/create-offer" className="hidden sm:block">
               <Button classNames="py-1 hover:bg-emerald-600 hover:shadow-emerald-700 text-sm">
                 Create Offer
@@ -43,11 +48,11 @@ const Nav = () => {
             </Link>
             <Button
               onClick={signOutHandler}
-              classNames="py-1 hidden sm:block mx-2 text-sm"
+              classNames="py-1 hidden sm:block text-sm"
             >
               Sign Out
             </Button>
-          </>
+          </div>
         ) : (
           <Button onClick={signInHandler} classNames="text-sm">
             Sign In
@@ -83,13 +88,15 @@ const Nav = () => {
         {/* LARGER DEVICES */}
         {session?.user && (
           <div className="hidden sm:flex sm:items-center sm:gap-2">
-            <Image
-              className="rounded-full"
-              src={session?.user.image}
-              width={35}
-              height={35}
-              alt="User Image"
-            />
+            <Link href="/profile">
+              <Image
+                className="rounded-full"
+                src={session?.user.image}
+                width={35}
+                height={35}
+                alt="User Image"
+              />
+            </Link>
           </div>
         )}
       </div>
