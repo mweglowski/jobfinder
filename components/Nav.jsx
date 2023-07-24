@@ -7,9 +7,11 @@ import Button from "@components/ui/Button";
 import Link from "next/link";
 import Image from "next/image";
 import Dropdown from "@components/ui/Dropdown";
+import { useRouter } from "next/navigation";
 
 const Nav = () => {
   const { data: session } = useSession();
+  const rounter = useRouter();
   const [isDropdownDisplayed, setIsDropdownDisplayed] = useState(false);
 
   const handleToggleDropdown = () => {
@@ -17,6 +19,7 @@ const Nav = () => {
   };
 
   const signOutHandler = () => {
+    rounter.push('/')
     signOut();
   };
 

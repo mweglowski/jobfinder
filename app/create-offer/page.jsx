@@ -1,5 +1,5 @@
 "use client";
-import React, { createRef, useState } from "react";
+import React, { createRef, useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -12,6 +12,16 @@ import Link from "next/link";
 const CreateOffer = () => {
   const { data: session } = useSession();
   const router = useRouter();
+
+  // CHANGE TO ROOT ROUTE IF USER IS NOT SIGNED IN
+  useEffect(() => {
+    setTimeout(() => {
+      if (!session) {
+        router.push("/");
+        return;
+      }
+    }, 500);
+  }, []);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [skills, setSkills] = useState([]);
