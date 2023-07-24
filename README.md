@@ -1,14 +1,16 @@
 ## Desktop View
-![alt text](https://i.imgur.com/FPFVkV2.png)
+![alt text](https://i.imgur.com/INNebSn.png)
 
-![alt text](https://i.imgur.com/SFtE7Hv.png)
+![alt text](https://i.imgur.com/D1oKPEq.png)
 
-![alt text](https://i.imgur.com/T8jcP5B.png)
+![alt text](https://i.imgur.com/8um8JMt.png)
 
 ## Mobile View
-![alt text](https://i.imgur.com/SoTEFhc.png)
+![alt text](https://i.imgur.com/YazZmhY.png)
 
-![alt text](https://i.imgur.com/0a7Ukz7.png)
+![alt text](https://i.imgur.com/O42pfns.png)
+
+![alt text](https://i.imgur.com/9iAdyvY.png)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

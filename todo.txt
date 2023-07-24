@@ -3,3 +3,5 @@ user profile presenting user details and offers that user posted and ability to 
 jobOffer page or modal window (lightbox)
 
 create Form component
+
+create signin page and use getProviders setproviders and object.values(providers) ...
