@@ -79,7 +79,7 @@ const Feed = () => {
 
   useEffect(() => {
     performSearch();
-  });
+  }, [performSearch]);
 
   const handleSearchChange = (e) => {
     setSearchText(e.target.value);
