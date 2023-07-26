@@ -2,7 +2,7 @@ import Feed from "@components/Feed/Feed";
 
 export default function Home() {
   return (
-    <section className="w-full flex-col justify-center items-center">
+    <section className="w-full flex-col justify-center items-center pb-5">
       <h1 className="text-7xl font-bold mt-10 text-center font-sans">
         Find Your <span className="green_gradient">Dream Job</span>
       </h1>
