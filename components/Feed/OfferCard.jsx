@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import React from "react";
+import Skill from "./Skill";
 
 const OfferCard = ({ data }) => {
   let {
@@ -52,14 +53,9 @@ const OfferCard = ({ data }) => {
         </p>
       </div>
       {/* </div> */}
-      <div className="flex flex-wrap text-slate-100 font-semibold gap-1 mt-2 justify-evenly">
+      <div className="flex flex-wrap  gap-1 mt-2 justify-evenly">
         {skills.map((skill) => (
-          <div
-            className="bg-slate-400/60 backdrop-blur-lg backdrop-filter rounded-md p-1 px-2 shadow-lg tracking-wider border-2 border-slate-200"
-            key={skill}
-          >
-            {skill}
-          </div>
+          <Skill key={skill} text={skill} />
         ))}
       </div>
       <div className="font-semibold relative top-2">{employmentMethod}</div>

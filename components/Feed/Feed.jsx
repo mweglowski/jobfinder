@@ -2,7 +2,8 @@
 import { useEffect, useState } from "react";
 import DetailsContainer from "@components/Feed/DetailsContainer";
 import JobContainer from "@components/Feed/JobContainer";
-import LoadingOfferCard from "./LoadingOfferCard";
+import LoadingOfferCard from "@components/Feed/LoadingOfferCard";
+import ExperienceBar from "@components/Feed/ExperienceBar";
 
 const Feed = () => {
   const [isLoadingOffers, setIsLoadingOffers] = useState(false);
@@ -70,7 +71,7 @@ const Feed = () => {
       let data = await response.json();
 
       // SHUFFLE OFFERS
-      data = data.sort((a, b) => .5 - Math.random());
+      data = data.sort((a, b) => 0.5 - Math.random());
 
       setJobOffers(data);
       setSearchedOffers(data);
@@ -82,7 +83,7 @@ const Feed = () => {
 
   useEffect(() => {
     performSearch();
-  }, []);
+  }, [details]);
 
   const handleSearchChange = (e) => {
     setSearchText(e.target.value);
@@ -123,6 +124,9 @@ const Feed = () => {
         onChange={handleSearchChange}
         onKeyDown={handleKeyDown}
       />
+
+      {/* Experience Bar */}
+      <ExperienceBar />
 
       {/* Filtered Jobs */}
       {isLoadingOffers ? (
