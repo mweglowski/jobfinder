@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import LoadingActiveOfferCard from "@components/Profile/LoadingActiveOfferCard";
 import ActiveOffer from "@components/Profile/ActiveOffer";
+import Line from "@components/ui/Line";
 
 const Profile = () => {
   const { data: session } = useSession();
@@ -62,7 +63,7 @@ const Profile = () => {
           )}
         </span>
       </div>
-      <div className="w-full h-[2px] bg-slate-300 rounded-full mb-2" />
+      <Line />
 
       {isLoadingOffers ? (
         <>

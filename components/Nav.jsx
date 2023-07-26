@@ -54,9 +54,11 @@ const Nav = () => {
             </Button>
           </div>
         ) : (
-          <Button onClick={signInHandler} classNames="text-sm">
-            Sign In
-          </Button>
+          <Link href="/signin">
+            <Button classNames="text-sm">
+              Sign In
+            </Button>
+          </Link>
         )}
 
         {/* MOBILE (IMAGE & DROPDOWN)*/}

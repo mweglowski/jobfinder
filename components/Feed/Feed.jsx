@@ -67,7 +67,10 @@ const Feed = () => {
     setIsLoadingOffers(true);
     const fetchOffers = async () => {
       const response = await fetch("/api/offer");
-      const data = await response.json();
+      let data = await response.json();
+
+      // SHUFFLE OFFERS
+      data = data.sort((a, b) => .5 - Math.random());
 
       setJobOffers(data);
       setSearchedOffers(data);
@@ -79,7 +82,7 @@ const Feed = () => {
 
   useEffect(() => {
     performSearch();
-  }, [performSearch]);
+  }, []);
 
   const handleSearchChange = (e) => {
     setSearchText(e.target.value);
