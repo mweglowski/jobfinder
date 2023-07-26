@@ -16,7 +16,7 @@ const SignInButton = ({ providerId }) => {
 
   return (
     <Button
-      classNames="w-[80%] bg-green-50 border animate-slide_down text-slate-700 hover:bg-slate-100 hover:text-slate-700 hover:shadow-none flex justify-center gap-3 py-3"
+      classNames="w-[80%] bg-green-50 border animate-slide_down text-slate-700 hover:bg-slate-100 hover:text-slate-800 hover:shadow-none flex justify-center gap-3 py-3"
       onClick={signInHandler}
     >
       <Image
